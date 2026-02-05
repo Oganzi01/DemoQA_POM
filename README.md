@@ -1,4 +1,4 @@
-# DemoQA_POM(https://github.com/Oganzi01/DemoQA_POM/actions/workflows/maven.yml/badge.svg?branch=master)
+# DemoQA_POM
 
 ### Автоматизация тестирования DemoQA
 * **Стек:** Java 21, Maven, Selenium, JUnit 5.
