@@ -5,30 +5,27 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class TestBase {
-
     protected WebDriver driver;
 
-    @BeforeEach
+    @BeforeEach // В JUnit 5 пишется так
     public void setUp() {
-
-        Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
-        Logger.getLogger("org.apache.hc").setLevel(Level.OFF);
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-
-
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--window-size=1920,1080");
+
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @AfterEach
+    @AfterEach // В JUnit 5 пишется так
     public void tearDown() {
         if (driver != null) {
             driver.quit();
