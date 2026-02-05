@@ -1,7 +1,7 @@
-package alerts;
+package com.demoqa.tests;
 
 import base.BaseTests;
-import org.junit.jupiter.api.Disabled; // Добавили импорт для отключения теста
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
