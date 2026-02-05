@@ -20,6 +20,6 @@ public class AlertsTests extends TestBase {
     @Test
     public void testJavaScriptPrompt() {
         driver.get("https://demoqa.com/alerts");
-
+        // Логика теста
     }
 }
