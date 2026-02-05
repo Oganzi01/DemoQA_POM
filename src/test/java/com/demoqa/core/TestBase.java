@@ -11,12 +11,15 @@ import java.time.Duration;
 public class TestBase {
     protected WebDriver driver;
 
-    @BeforeEach // В JUnit 5 пишется так
+    @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+
+        if (System.getenv("GITHUB_ACTIONS") != null) {
+            options.addArguments("--headless=new");
+        }
+
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
@@ -25,7 +28,7 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @AfterEach // В JUnit 5 пишется так
+    @AfterEach
     public void tearDown() {
         if (driver != null) {
             driver.quit();
