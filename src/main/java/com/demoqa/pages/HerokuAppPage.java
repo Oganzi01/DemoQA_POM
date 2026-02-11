@@ -23,7 +23,7 @@ public class HerokuAppPage {
     }
 
     public void moveSliderToMax() {
-        // Смещение 100 пикселей гарантированно передвинет его до значения 5.0
+
         actions.dragAndDropBy(driver.findElement(slider), 100, 0).perform();
     }
 

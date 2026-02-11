@@ -16,17 +16,17 @@ public class ActionsHomework extends TestBase {
     @Test
     public void dragAndDropTest() throws InterruptedException {
         driver.get("https://the-internet.herokuapp.com/drag_and_drop");
-        Thread.sleep(2000); // Смотрим на начальное положение A и B
+        Thread.sleep(2000);
         page.dragAndDropSquares();
-        Thread.sleep(3000); // Видим результат переноса
+        Thread.sleep(3000);
     }
 
     @Test
     public void sliderTest() throws InterruptedException {
         driver.get("https://the-internet.herokuapp.com/horizontal_slider");
-        Thread.sleep(2000); // Видим слайдер на нуле
+        Thread.sleep(2000);
         page.moveSliderToMax();
-        Thread.sleep(3000); // Видим значение 5
+        Thread.sleep(3000);
     }
 
     @Test
