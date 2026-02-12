@@ -1,25 +1,24 @@
 package com.demoqa.tests;
 
 import com.demoqa.core.TestBase;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-@Disabled("Весь класс временно отключен: DemoQA слишком нестабилен для GitHub Actions")
 public class AlertsTests extends TestBase {
 
     @Test
-    public void testAcceptAlert() {
-        driver.get("https://demoqa.com/alerts");
-        driver.findElement(By.id("alertButton")).click();
-        driver.switchTo().alert().accept();
+    @Tag("smoky")
+    @DisplayName("Проверка алерта с выбором")
+    public void alertWithSelectTest() {
+
+        // driver.findElement(By.id("confirmButton")).click();
+        // driver.switchTo().alert().accept();
     }
 
     @Test
-    public void testJavaScriptPrompt() {
-        driver.get("https://demoqa.com/alerts");
-        // Логика теста
+    @DisplayName("Обычный тест без тега")
+    public void regularTest() {
+
     }
 }

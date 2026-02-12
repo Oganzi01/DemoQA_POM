@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 public class RobotTest extends TestBase {
 
     @Test
-    // ЧИТАТЬ ТАК: "Отключи этот тест, если переменная GITHUB_ACTIONS равна true"
+
     @DisabledIfEnvironmentVariable(named = "GITHUB_ACTIONS", matches = "true")
     public void robotScrollTest() throws Exception {
         Thread.sleep(2000);
