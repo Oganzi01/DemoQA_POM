@@ -30,7 +30,8 @@ public class TestBase {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        
+
+
         if (System.getenv("GITHUB_ACTIONS") == null) {
             driver.manage().window().maximize();
         }
