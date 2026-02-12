@@ -2,14 +2,14 @@ package com.demoqa.tests;
 
 import com.demoqa.core.TestBase;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable; // Импортируем аннотацию
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable; 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
 public class RobotTest extends TestBase {
 
     @Test
-    // ЧИТАТЬ ТАК: "Отключи этот тест, если переменная GITHUB_ACTIONS равна true"
+    
     @DisabledIfEnvironmentVariable(named = "GITHUB_ACTIONS", matches = "true")
     public void robotScrollTest() throws Exception {
         Thread.sleep(2000);
