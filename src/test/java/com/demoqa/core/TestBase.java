@@ -18,19 +18,19 @@ public class TestBase {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
 
-        // Проверяем, запущены ли мы на GitHub Actions
+       
         if (System.getenv("GITHUB_ACTIONS") != null) {
-            // Настройки для сервера (Linux)
-            options.addArguments("--headless"); // Запуск без окна
-            options.addArguments("--no-sandbox"); // Важно для Linux-серверов
-            options.addArguments("--disable-dev-shm-usage"); // Чтобы не переполнялась память
-            options.addArguments("--window-size=1920,1080"); // Задаем размер экрана
+            
+            options.addArguments("--headless"); 
+            options.addArguments("--no-sandbox"); 
+            options.addArguments("--disable-dev-shm-usage"); 
+            options.addArguments("--window-size=1920,1080"); 
         }
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // Опционально: разворачиваем на весь экран, если мы НЕ на сервере
+        
         if (System.getenv("GITHUB_ACTIONS") == null) {
             driver.manage().window().maximize();
         }
