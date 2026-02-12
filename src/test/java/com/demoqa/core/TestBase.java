@@ -18,13 +18,13 @@ public class TestBase {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
 
-
+       
         if (System.getenv("GITHUB_ACTIONS") != null) {
-
-            options.addArguments("--headless");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--window-size=1920,1080");
+            
+            options.addArguments("--headless"); 
+            options.addArguments("--no-sandbox"); 
+            options.addArguments("--disable-dev-shm-usage"); 
+            options.addArguments("--window-size=1920,1080"); 
         }
 
         driver = new ChromeDriver(options);
