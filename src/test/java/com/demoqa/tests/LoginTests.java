@@ -8,7 +8,6 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginPositiveTest() {
-        // Здесь твоя логика теста, например:
-        // app.getHomePage().getBookStore();
+
     }
 }

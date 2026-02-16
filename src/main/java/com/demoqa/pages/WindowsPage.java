@@ -1,15 +1,15 @@
 package com.demoqa.pages;
 
 import com.demoqa.core.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WindowsPage extends BasePage {
-    public WindowsPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(id = "tabButton")
     WebElement tabButton;
@@ -17,30 +17,29 @@ public class WindowsPage extends BasePage {
     @FindBy(id = "windowButton")
     WebElement windowButton;
 
-    @FindBy(id = "messageWindowButton")
-    WebElement messageWindowButton;
+    @FindBy(id = "sampleHeading")
+    WebElement sampleHeading;
 
-    // Тот самый метод, который был "красным"
-    public WindowsPage clickWindowButton() {
-        click(windowButton);
-        return this;
+    public WindowsPage(WebDriver driver) {
+        super(driver);
     }
 
-    public WindowsPage clickOnClickHere() {
+    public void clickOnClickHere() {
+        wait.until(ExpectedConditions.elementToBeClickable(tabButton));
         click(tabButton);
-        return this;
     }
 
-    public WindowsPage clickMessageWindowButton() {
-        click(messageWindowButton);
-        return this;
+    public void clickWindowButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(windowButton));
+        click(windowButton);
+    }
+
+    public void switchToNewWindow(int index) {
+        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(index));
     }
 
     public String getHeaderText() {
-        return should(By.className("main-header")).getText();
-    }
-
-    public String getSampleText() {
-        return should(By.id("sampleHeading")).getText();
+        return wait.until(ExpectedConditions.visibilityOf(sampleHeading)).getText();
     }
 }

@@ -5,31 +5,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class FramesPage extends BasePage {
+
+    @FindBy(id = "frame1")
+    WebElement frame1;
+
+    @FindBy(id = "sampleHeading")
+    WebElement frameText;
+
     public FramesPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(id = "frame1")
-    WebElement parentFrame;
-
     public String getParentFrameText() {
-        // Переключаемся в родительский фрейм
-        driver.switchTo().frame(parentFrame);
-        // Берем текст самого тела (body) фрейма
-        return driver.findElement(By.tagName("body")).getText();
-    }
 
-    public String getChildFrameText() {
-        // Переключаемся в первый (и единственный) вложенный фрейм
-        driver.switchTo().frame(0);
-        // Ждем появления тега <p> и берем его текст
-        return should(By.tagName("p")).getText();
-    }
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("frame1")));
+        String text = frameText.getText();
 
-    public void exitToMainContent() {
-        // Возвращаемся на главную страницу
         driver.switchTo().defaultContent();
+        return text;
     }
 }
