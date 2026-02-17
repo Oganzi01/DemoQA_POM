@@ -13,6 +13,7 @@ public class FinalHomeworkTests extends TestBase {
     public void nestedFramesTest() {
         driver.get("https://demoqa.com/nestedframes");
         FramesPage framesPage = new FramesPage(driver);
+        framesPage.waitForPageLoaded(); // Ждем загрузки
         String text = framesPage.getParentFrameText();
         Assertions.assertEquals("Parent frame", text);
     }
@@ -21,9 +22,10 @@ public class FinalHomeworkTests extends TestBase {
     public void windowTabTest() {
         driver.get("https://demoqa.com/browser-windows");
         WindowsPage windowsPage = new WindowsPage(driver);
+        windowsPage.waitForPageLoaded();
         windowsPage.clickOnClickHere();
-        windowsPage.switchToNewWindow(1);
-        String text = windowsPage.getHeaderText();
+        windowsPage.switchToTab(1);
+        String text = windowsPage.getSampleText();
         Assertions.assertEquals("This is a sample page", text);
     }
 
@@ -31,7 +33,8 @@ public class FinalHomeworkTests extends TestBase {
     public void selectMenuTest() {
         driver.get("https://demoqa.com/select-menu");
         SelectPage selectPage = new SelectPage(driver);
+        selectPage.waitForPageLoaded();
         selectPage.selectColorByText("Blue");
-        Assertions.assertEquals("Blue", selectPage.getSelectedValue());
+        Assertions.assertEquals("Blue", selectPage.getSelectedColorText());
     }
 }

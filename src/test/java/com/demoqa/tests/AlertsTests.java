@@ -12,8 +12,7 @@ public class AlertsTests extends TestBase {
     @DisplayName("Проверка алерта с выбором")
     public void alertWithSelectTest() {
 
-        // driver.findElement(By.id("confirmButton")).click();
-        // driver.switchTo().alert().accept();
+
     }
 
     @Test
