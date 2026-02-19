@@ -2,28 +2,29 @@ package com.demoqa.tests;
 
 import com.demoqa.core.TestBase;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable; 
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class RobotTest extends TestBase {
 
     @Test
-    
-    @DisabledIfEnvironmentVariable(named = "GITHUB_ACTIONS", matches = "true")
-    public void robotScrollTest() throws Exception {
-        Thread.sleep(2000);
-        Robot robot = new Robot();
+    public void scrollPageTest() {
+        driver.get("https://demoqa.com/automation-practice-form");
 
-        System.out.println("Робот начинает скроллинг...");
-        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-        robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+        System.out.println("Начинаем скроллинг через JavaScript...");
 
-        Thread.sleep(1000);
 
-        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
-        robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");
 
-        System.out.println("Скроллинг завершен.");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+        System.out.println("Скроллинг завершен успешно.");
     }
 }
