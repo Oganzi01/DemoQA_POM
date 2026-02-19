@@ -1,7 +1,7 @@
 package com.demoqa.tests;
 
 import com.demoqa.core.TestBase;
-import com.demoqa.pages.FramesPage;
+import com.demoqa.pages.NestedFramesPage;
 import com.demoqa.pages.SelectPage;
 import com.demoqa.pages.WindowsPage;
 import org.junit.jupiter.api.Assertions;
@@ -12,7 +12,7 @@ public class FinalHomeworkTests extends TestBase {
     @Test
     public void nestedFramesTest() {
         driver.get("https://demoqa.com/nestedframes");
-        FramesPage framesPage = new FramesPage(driver);
+        NestedFramesPage framesPage = new NestedFramesPage(driver);
         framesPage.waitForPageLoaded(); // Ждем загрузки
         String text = framesPage.getParentFrameText();
         Assertions.assertEquals("Parent frame", text);

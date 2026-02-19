@@ -1,7 +1,7 @@
 package com.demoqa.tests;
 
 import com.demoqa.core.TestBase;
-import com.demoqa.pages.FramesPage;
+import com.demoqa.pages.NestedFramesPage;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -10,20 +10,17 @@ public class NestedFramesTests extends TestBase {
     @Test
     public void testNestedFrames() {
         driver.get("https://demoqa.com/nestedframes");
-        FramesPage framesPage = new FramesPage(driver);
+        NestedFramesPage nestedFramesPage = new NestedFramesPage(driver);
 
-        // 1. Проверяем родительский фрейм
-        String parentText = framesPage.getParentFrameText();
-        System.out.println("Parent text found: " + parentText);
-        // Используем toLowerCase(), чтобы регистр букв не мешал
+
+        String parentText = nestedFramesPage.getParentFrameText();
         assertTrue(parentText.toLowerCase().contains("parent frame"), "Текст родителя не найден!");
 
-        // 2. Проверяем вложенный фрейм
-        String childText = framesPage.getChildFrameText();
-        System.out.println("Child text found: " + childText);
-        // Здесь тоже переводим в нижний регистр для надежности
+
+        String childText = nestedFramesPage.getChildFrameText();
         assertTrue(childText.toLowerCase().contains("child iframe"), "Текст ребенка не найден!");
 
-        framesPage.exitToMainContent();
+
+        nestedFramesPage.switchToDefaultContent();
     }
 }
